@@ -3,262 +3,362 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ivy Liu | Portfolio</title>
+    <title>Ivy Liu | Professional Portfolio</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <style>
         :root {
-            --primary: #0f172a;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --text-main: #334155;
-            --text-light: #64748b;
-            --bg-light: #f8fafc;
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            --bs-font-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --brand-primary: #0f172a;       /* Deep Slate Navy */
+            --brand-accent: #0284c7;        /* Clinical Cyan/Blue */
+            --brand-accent-hover: #0369a1;
+            --brand-surface: #ffffff;
+            --brand-bg: #f8fafc;
+            --brand-border: #e2e8f0;
+            --brand-muted: #64748b;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-main);
-            background-color: var(--bg-light);
-            padding: 2rem 1rem;
+            font-family: var(--bs-font-sans-serif);
+            color: #334155;
+            background-color: var(--brand-bg);
+            scroll-behavior: smooth;
+            scroll-padding-top: 5rem;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
+        /* Navbar Styling */
+        .navbar {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--brand-border);
         }
-
-        header {
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 1.5rem;
-            margin-bottom: 2rem;
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--brand-primary) !important;
+            letter-spacing: -0.02em;
         }
-
-        header h1 {
-            font-size: 2.25rem;
-            color: var(--primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .title {
-            font-size: 1.1rem;
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .institution {
-            font-size: 0.95rem;
-            color: var(--text-light);
-        }
-
-        section {
-            margin-bottom: 2.5rem;
-        }
-
-        h2 {
-            font-size: 1.35rem;
-            color: var(--primary);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background-color: #eff6ff;
-            color: var(--accent);
-            padding: 0.35rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
+        .nav-link {
             font-weight: 500;
-            border: 1px solid #dbeafe;
+            color: var(--brand-muted) !important;
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover, .nav-link:focus {
+            color: var(--brand-accent) !important;
         }
 
-        .projects-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 0.5rem;
+        /* Hero / Header */
+        .hero-section {
+            padding: 4rem 0 3rem 0;
+            background: linear-gradient(180deg, #ffffff 0%, var(--brand-bg) 100%);
+            border-bottom: 1px solid var(--brand-border);
         }
-
-        .projects-table th, 
-        .projects-table td {
-            text-align: left;
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--border-color);
+        .hero-title {
+            font-size: 2.75rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--brand-primary);
         }
-
-        .projects-table th {
-            background-color: var(--bg-light);
-            color: var(--primary);
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--brand-accent);
             font-weight: 600;
         }
-
-        .projects-table tr:hover {
-            background-color: #f1f5f9;
+        .hero-affiliation {
+            font-size: 1rem;
+            color: var(--brand-muted);
         }
 
-        .resume-placeholder {
-            padding: 1.25rem;
-            background-color: var(--bg-light);
-            border: 1px dashed var(--border-color);
-            border-radius: 8px;
-            color: var(--text-light);
-            font-style: italic;
+        /* Cards & Containers */
+        .card {
+            border: 1px solid var(--brand-border);
+            border-radius: 12px;
+            background: var(--brand-surface);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-
-        .contact-list {
-            list-style: none;
-            padding: 0;
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06);
+        }
+        .section-header {
             display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--brand-primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+        .section-header i {
+            color: var(--brand-accent);
         }
 
-        .contact-list li strong {
-            color: var(--primary);
-            min-width: 130px;
-            display: inline-block;
+        /* Skills Badges */
+        .skill-badge {
+            background-color: #f0f9ff;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
+            font-weight: 500;
+            padding: 0.45rem 0.9rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.15s ease;
+        }
+        .skill-badge:hover {
+            background-color: #e0f2fe;
+            color: var(--brand-primary);
+            border-color: #7dd3fc;
         }
 
-        .contact-list a {
-            color: var(--accent);
+        /* Contact Items */
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             text-decoration: none;
+            color: #1e293b;
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--brand-border);
+            border-radius: 8px;
+            background: #ffffff;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        .contact-btn:hover {
+            background: #f8fafc;
+            color: var(--brand-accent);
+            border-color: #cbd5e1;
+        }
+        .contact-btn i {
+            font-size: 1.1rem;
+            color: var(--brand-accent);
         }
 
-        .contact-list a:hover {
-            color: var(--accent-hover);
-            text-decoration: underline;
-        }
-
+        /* Footer */
         footer {
-            text-align: center;
-            margin-top: 3rem;
-            color: var(--text-light);
-            font-size: 0.85rem;
+            border-top: 1px solid var(--brand-border);
+            background: #ffffff;
+            color: var(--brand-muted);
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <h1>Ivy Liu</h1>
-            <div class="title">Biomedical Engineering Student &amp; Founder</div>
-            <div class="institution">Exchange Student | University of Utah &amp; CityU Hong Kong</div>
-        </header>
-
-        <!-- About Me Section -->
-        <section id="about">
-            <h2>About Me</h2>
-            <p>
-                I am a senior Biomedical Engineering student with a passion for bridging clinical technology, enterprise information systems, and corporate data governance. Professionally, I am interested in healthcare technology consulting, data analytics, and tech entrepreneurship—currently serving as the founder of Healware, a digital health venture focused on physiological telemetry and patient monitoring. My technical focus revolves around architecting compliant healthcare data pipelines, business intelligence, and relational database systems. In AI, I am fascinated by Parameter-Efficient Fine-Tuning (PEFT), machine learning applications in biomedical signal processing, and enterprise AI workflow automation. My goal is to leverage robust information systems to transform complex medical metrics into scalable commercial products and actionable executive insights.
-            </p>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">SQL &amp; Relational Databases</span>
-                <span class="skill-tag">HTML &amp; CSS</span>
-                <span class="skill-tag">Git &amp; GitHub</span>
-                <span class="skill-tag">Business Intelligence (BI)</span>
-                <span class="skill-tag">Data Governance &amp; Compliance</span>
-                <span class="skill-tag">Tableau</span>
-                <span class="skill-tag">Microsoft Excel</span>
-                <span class="skill-tag">AI Prompt Engineering</span>
-                <span class="skill-tag">Healthcare Interoperability (FHIR/HL7)</span>
+    <!-- Sticky Navigation Menu -->
+    <nav class="navbar navbar-expand-md sticky-top shadow-sm py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
+                <i class="bi bi-cpu-fill text-primary"></i>
+                <span>Ivy Liu</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-md-0 gap-md-2">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
             </div>
-        </section>
+        </div>
+    </nav>
 
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2>Projects</h2>
-            <table class="projects-table">
-                <thead>
-                    <tr>
-                        <th style="width: 30%;">Project</th>
-                        <th style="width: 70%;">Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>AI Business Analysis</strong></td>
-                        <td>Analyze business data using ChatGPT</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Data Visualization</strong></td>
-                        <td>Dashboard built with Tableau</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Web Development</strong></td>
-                        <td>Responsive Bootstrap website</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Process Improvement</strong></td>
-                        <td>AI-assisted business workflow redesign</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Resume Section -->
-        <section id="resume">
-            <h2>Resume</h2>
-            <div class="resume-placeholder">
-                <p>Resume coming soon</p>
+    <!-- Header / Hero -->
+    <header class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-9">
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 mb-3 rounded-pill fw-semibold">
+                        IS 3060 Portfolio
+                    </span>
+                    <h1 class="hero-title">Ivy Liu</h1>
+                    <div class="hero-subtitle mb-2">Biomedical Engineering Student &amp; Digital Health Founder</div>
+                    <div class="hero-affiliation d-flex flex-wrap align-items-center gap-3">
+                        <span><i class="bi bi-geo-alt me-1"></i>Exchange Student | University of Utah</span>
+                        <span>&bull;</span>
+                        <span>City University of Hong Kong</span>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+    </header>
 
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <ul class="contact-list">
-                <li>
-                    <strong>U of U Email:</strong> 
-                    <a href="mailto:u1670353@utah.edu">u1670353@utah.edu</a>
-                </li>
-                <li>
-                    <strong>CityU Email:</strong> 
-                    <a href="mailto:cheukcliu2-c@my.cityu.edu.hk">cheukcliu2-c@my.cityu.edu.hk</a>
-                </li>
-                <li>
-                    <strong>LinkedIn:</strong> 
-                    <a href="https://www.linkedin.com/in/ivy-l-276648240/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ivy-l-276648240</a>
-                </li>
-                <li>
-                    <strong>GitHub:</strong> 
-                    <a href="https://github.com/ivy-liu-lc" target="_blank" rel="noopener noreferrer">github.com/ivy-liu-lc</a>
-                </li>
-            </ul>
-        </section>
+    <!-- Main Content Container -->
+    <main class="container py-5">
+        <div class="row g-5">
+            <div class="col-12">
 
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2026 Ivy Liu &bull; IS 3060 Portfolio</p>
-        </footer>
-    </div>
+                <!-- About Me -->
+                <section id="about" class="mb-5">
+                    <h2 class="section-header">
+                        <i class="bi bi-person-lines-fill"></i>
+                        About Me
+                    </h2>
+                    <div class="card p-4">
+                        <p class="lead fs-6 mb-0 text-secondary" style="line-height: 1.75;">
+                            I am a senior Biomedical Engineering student with a passion for bridging clinical technology, enterprise information systems, and corporate data governance. Professionally, I am interested in healthcare technology consulting, data analytics, and tech entrepreneurship—currently serving as the founder of Healware, a digital health venture focused on physiological telemetry and patient monitoring. My technical focus revolves around architecting compliant healthcare data pipelines, business intelligence, and relational database systems. In AI, I am fascinated by Parameter-Efficient Fine-Tuning (PEFT), machine learning applications in biomedical signal processing, and enterprise AI workflow automation. My goal is to leverage robust information systems to transform complex medical metrics into scalable commercial products and actionable executive insights.
+                        </p>
+                    </div>
+                </section>
 
+                <!-- Skills -->
+                <section id="skills" class="mb-5">
+                    <h2 class="section-header">
+                        <i class="bi bi-tools"></i>
+                        Skills &amp; Competencies
+                    </h2>
+                    <div class="card p-4">
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="skill-badge"><i class="bi bi-code-slash"></i>Python</span>
+                            <span class="skill-badge"><i class="bi bi-database"></i>SQL &amp; Relational Databases</span>
+                            <span class="skill-badge"><i class="bi bi-filetype-html"></i>HTML5 &amp; CSS3</span>
+                            <span class="skill-badge"><i class="bi bi-git"></i>Git &amp; GitHub</span>
+                            <span class="skill-badge"><i class="bi bi-bar-chart-line-fill"></i>Business Intelligence (BI)</span>
+                            <span class="skill-badge"><i class="bi bi-shield-check"></i>Data Governance &amp; Compliance</span>
+                            <span class="skill-badge"><i class="bi bi-graph-up"></i>Tableau</span>
+                            <span class="skill-badge"><i class="bi bi-file-earmark-spreadsheet"></i>Microsoft Excel</span>
+                            <span class="skill-badge"><i class="bi bi-robot"></i>AI Prompt Engineering</span>
+                            <span class="skill-badge"><i class="bi bi-diagram-3-fill"></i>Healthcare Interoperability (FHIR/HL7)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section id="projects" class="mb-5">
+                    <h2 class="section-header">
+                        <i class="bi bi-kanban"></i>
+                        Course Projects
+                    </h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100 p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div class="badge bg-light text-primary border px-3 py-2 rounded-pill">
+                                        <i class="bi bi-robot me-1"></i> AI &amp; Strategy
+                                    </div>
+                                </div>
+                                <h3 class="h5 fw-bold text-dark mb-2">AI Business Analysis</h3>
+                                <p class="text-muted mb-0">Analyze business data and streamline decision-making frameworks using ChatGPT and advanced prompt engineering.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card h-100 p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div class="badge bg-light text-primary border px-3 py-2 rounded-pill">
+                                        <i class="bi bi-pie-chart me-1"></i> Analytics
+                                    </div>
+                                </div>
+                                <h3 class="h5 fw-bold text-dark mb-2">Data Visualization</h3>
+                                <p class="text-muted mb-0">Interactive operational and analytical dashboard built with Tableau to communicate high-signal business insights.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card h-100 p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div class="badge bg-light text-primary border px-3 py-2 rounded-pill">
+                                        <i class="bi bi-window-fullscreen me-1"></i> Frontend
+                                    </div>
+                                </div>
+                                <h3 class="h5 fw-bold text-dark mb-2">Web Development</h3>
+                                <p class="text-muted mb-0">Responsive, mobile-friendly personal portfolio website built with modern HTML5, CSS3, and Bootstrap 5.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card h-100 p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div class="badge bg-light text-primary border px-3 py-2 rounded-pill">
+                                        <i class="bi bi-arrow-repeat me-1"></i> Operations
+                                    </div>
+                                </div>
+                                <h3 class="h5 fw-bold text-dark mb-2">Process Improvement</h3>
+                                <p class="text-muted mb-0">AI-assisted business workflow redesign focusing on bottleneck elimination and automated systems efficiency.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Resume Placeholder -->
+                <section id="resume" class="mb-5">
+                    <h2 class="section-header">
+                        <i class="bi bi-file-earmark-person"></i>
+                        Resume
+                    </h2>
+                    <div class="card p-4 border-dashed text-center bg-light">
+                        <div class="py-3">
+                            <i class="bi bi-clock-history display-6 text-muted mb-2 d-block"></i>
+                            <p class="mb-0 text-muted fw-medium fst-italic">Resume coming soon</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="mb-4">
+                    <h2 class="section-header">
+                        <i class="bi bi-envelope-at"></i>
+                        Get In Touch
+                    </h2>
+                    <div class="card p-4">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <a href="mailto:u1670353@utah.edu" class="contact-btn w-100">
+                                    <i class="bi bi-envelope-fill"></i>
+                                    <span class="text-truncate">u1670353@utah.edu (U of U)</span>
+                                </a>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="mailto:cheukcliu2-c@my.cityu.edu.hk" class="contact-btn w-100">
+                                    <i class="bi bi-envelope"></i>
+                                    <span class="text-truncate">cheukcliu2-c@my.cityu.edu.hk</span>
+                                </a>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="https://www.linkedin.com/in/ivy-l-276648240/" target="_blank" rel="noopener noreferrer" class="contact-btn w-100">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span>LinkedIn Profile</span>
+                                </a>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="https://github.com/ivy-liu-lc" target="_blank" rel="noopener noreferrer" class="contact-btn w-100">
+                                    <i class="bi bi-github"></i>
+                                    <span>GitHub Profile</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Ivy Liu &bull; David Eccles School of Business &bull; IS 3060</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
